@@ -16,7 +16,7 @@ timezone: Asia/Ho_Chi_Minh
 
 title: Jso # the main title
 
-tagline: DevOps | FrontEnd | HomeLab # it will display as the sub-title
+tagline: DevOps | Servers | HomeLab # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal documentation website for my HomeLab

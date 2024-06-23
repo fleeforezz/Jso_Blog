@@ -8,7 +8,11 @@ image:
 ---
 
 # What is HomeLab or selfhost home server 🧐 ?
-A self-hosted home server is a do-it-yourself system that you set up at home to host various services like a personal website, file storage, media streaming, or even email. It gives you control over your data and services. Common uses include hosting websites, storing files, running a media server, managing emails, or even powering home automation. Setting up a self-hosted server requires technical know-how, and responsibilities include maintenance, security, and backups.
+A self-hosted home server is a do-it-yourself system that you set up at home
+to host various services like a personal website, file storage, media streaming,
+or even email. It gives you control over your data and services. Common uses include 
+hosting websites, storing files, running a media server, managing emails, or even powering 
+home automation. Setting up a self-hosted server requires technical know-how, and responsibilities include maintenance, security, and backups.
 
 # Why have to build a server 🌟 ?
 Building a self-hosted home server gives you control, privacy, and customization over your data and services. It's a cost-effective and independent solution, offering a valuable learning experience. However, it comes with responsibilities, including security and maintenance, and may be subject to your internet provider's policies.
