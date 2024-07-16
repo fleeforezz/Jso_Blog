@@ -1,5 +1,5 @@
 ---
-title: Kubernete-An open-source container orchestration system 🚢
+title: Kubernetes-An open-source container orchestration system 🚢
 date: 2024-07-17 8:27:00 
 categories: [Container-orchestration]
 tags: [Container-orchestration]
