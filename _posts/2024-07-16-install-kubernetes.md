@@ -1,6 +1,6 @@
 ---
 title: Kubernetes-An open-source container orchestration system 🚢
-date: 2024-07-17 8:27:00 
+date: 2024-07-16 8:27:00 
 categories: [Container-orchestration]
 tags: [Container-orchestration]
 image:
@@ -86,3 +86,13 @@ kubeadm join 10.0.1.47:6443 --token jqc69r.djvkfmrmoj201f3e \
 kubeadm join 10.0.1.47:6443 --token jqc69r.djvkfmrmoj201f3e \
         --discovery-token-ca-cert-hash sha256:2bda7403a0e3fb26f6df54f6446517881845596c1ef26ce8420942fd40a2c87c
 ```
+
+#### Install Kubernetes network plugin
+```shell
+kubectl get pods --all-namespaces
+```
+
+```shell
+kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
+```
+
