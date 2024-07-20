@@ -103,20 +103,29 @@ pipeline {
             }
         }
 
-        stage('Deploy to Kubernetes') {
+        stage('Deploy to server') {
             steps {
-                echo "####################### ${PURPLE}Deploy to Kubernetes${RESET_COLOR} #######################"
-                script {
-                    dir('Kubernetes') {
-                        withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
-                            sh 'kubectl apply -f manifest.yml'
-                            sh 'kubectl get svc'
-                            sh 'kubectl get all'
-                        }
-                    }
+                sshagent(['production-srv']) {
+                    sh "ssh -o StrictHostKeyChecking=no -l ${SERVER_CONNECTION}  'sudo docker stop ${APP_NAME} || true && sudo docker rm ${APP_NAME} || true'"
+                    sh "ssh -o StrictHostKeyChecking=no -l ${SERVER_CONNECTION} 'sudo docker run -p 4000:80 -d --name ${APP_NAME} --restart unless-stopped ${IMAGE_NAME}'"
                 }
             }
         }
+
+        // stage('Deploy to Kubernetes') {
+        //     steps {
+        //         echo "####################### ${PURPLE}Deploy to Kubernetes${RESET_COLOR} #######################"
+        //         script {
+        //             dir('Kubernetes') {
+        //                 withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+        //                     sh 'kubectl apply -f manifest.yml'
+        //                     sh 'kubectl get svc'
+        //                     sh 'kubectl get all'
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
     }
     post {
         always {
