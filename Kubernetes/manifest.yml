@@ -16,7 +16,7 @@ spec:
       - name: jso-blog
         image: fleeforezz/jso-blog
         ports:
-        - containerPort: 4000
+        - containerPort: 80
 
 ---
 apiVersion: v1
