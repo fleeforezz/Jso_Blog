@@ -62,9 +62,6 @@ sudo apt-mark hold kubelet kubeadm kubectl
 ```shell
 sudo kubeadm init --control-plane-endpoint=192.168.1.x --node-name controller --pod-network-cidr=10.244.0.0/16
 ```
-Things have to change
-`--control-plane-endpoint=<your-hostname-or-ip>`
-`--node-name <your-server-hostname>`
 > Things have to change
 > `--control-plane-endpoint=<your-hostname-or-ip>`
 > `--node-name <your-server-hostname>`
@@ -87,11 +84,22 @@ kubeadm join 10.0.1.47:6443 --token jqc69r.djvkfmrmoj201f3e \
 ```
 
 ### Install Kubernetes network plugin
+#### Calico network plugin
 ```shell
 kubectl get pods --all-namespaces
 ```
+##### Install Helm
 
 ```shell
-kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+```
+##### Install Calico
+
+```shell
+helm repo add projectcalico https://docs.tigera.io/calico/charts
+kubectl create namespace tigera-operator
+helm install calico projectcalico/tigera-operator --version v3.28.0 --namespace tigera-operator
 ```
 
