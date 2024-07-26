@@ -15,8 +15,12 @@ spec:
       containers:
       - name: jso-blog
         image: fleeforezz/jso-blog:latest
+        resources:
+          limits:
+            memory: 100Mi
         ports:
         - containerPort: 4000
+      automountServiceAccountToken: false
 
 ---
 apiVersion: v1
