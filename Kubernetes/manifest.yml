@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: jso-blog
-        image: fleeforezz/jso-blog
+        image: fleeforezz/jso-blog:latest
         ports:
         - containerPort: 4000
 

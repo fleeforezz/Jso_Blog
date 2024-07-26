@@ -20,16 +20,17 @@ pipeline {
         SONAR_HOST_URL = "https://sonarqube.fleeforezz.me"
 
         // Docker info
-        DOCKER_USER = "fleeforezz"
-        IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
+        REGISTRY = "gitea.fleeforezz.me"
+        DOCKER_USER = "jso"
+        IMAGE_NAME = "${REGISTRY}" + "/" + "${DOCKER_USER}" + "/" + "${APP_NAME}"
         IMAGE_RELEASE_TAG = "${RELEASE}-${BUILD_NUMBER}"
         IMAGE_LATEST_TAG = "latest"
         IMAGE_BETA_TAG = "beta"
 
         // Server info
-        SERVER_USERNAME = "nhat"
-        SERVER_IP = "10.0.1.32"
-        SERVER_CONNECTION = "${SERVER_USERNAME}" + " " + "${SERVER_IP}"
+        // SERVER_USERNAME = "nhat"
+        // SERVER_IP = "10.0.1.32"
+        // SERVER_CONNECTION = "${SERVER_USERNAME}" + " " + "${SERVER_IP}"
     }
 
     stages {
@@ -70,6 +71,12 @@ pipeline {
             steps {
                 echo "####################### ${RED}Ruby Test${RESET_COLOR} #######################"
                 sh "sudo bundle exec jekyll build -d test"
+            }
+        }
+
+        stage('OWASP DP-SCAN') {
+            steps {
+                dependencyCheck additionalArguments: '', nvdCredentialsId: 'NVD-API', odcInstallation: 'owasp-dp-check'
             }
         }
 
