@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,10 +15,14 @@ spec:
     spec:
       containers:
       - name: jso-blog
-        image: fleeforezz/jso-blog:latest
+        image: fleeforezz/jso-blog
         resources:
           limits:
-            memory: 100Mi
+            cpu: "1000m"
+            memory: "1000Mi"
+          requests:
+            cpu: "750m"
+            memory: "750Mi"
         ports:
         - containerPort: 4000
       automountServiceAccountToken: false
