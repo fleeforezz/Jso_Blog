@@ -95,7 +95,7 @@ pipeline {
         stage('Trivy Docker Image Scan') {
             steps {
                 echo "####################### ${YELLOW}Trivy Docker Image Scan${RESET_COLOR} #######################"
-                sh "trivy image --severity HIGH,CRITICAL ${IMAGE_NAME}:${IMAGE_LATEST_TAG} > trivyimage.txt"
+                sh "trivy image --no-progress --exit-code 1 --severity HIGH,CRITICAL ${IMAGE_NAME}:${IMAGE_LATEST_TAG} > trivyimage.txt"
             }
         }
         
